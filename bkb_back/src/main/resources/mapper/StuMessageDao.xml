@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 声明接口地址 -->
+<mapper namespace="com.example.demo.dao.StuMessageDao">
+    <!-- 绑定接口方法 -->
+    <select id="retrieveAll" resultType="com.example.demo.entity.StuMessage">
+        select *
+        from stu_message
+    </select>
+    <select id="retrieveStuMessageDao" parameterType="String" resultType="com.example.demo.entity.StuMessage">
+        select *
+        from stu_message
+        where stu_number = #{stuNumber}
+    </select>
+    <delete id="deleteStuMessageDao" parameterType="String">
+        delete
+        from stu_message
+        where stu_number = #{stuNumber}
+    </delete>
+    <insert id="insertStuMessageDao" parameterType="com.example.demo.entity.StuMessage">
+        insert into stu_message(stu_number, stu_name, stu_sex)
+        values (#{stuNumber}, #{stuName}, #{stuSex})
+    </insert>
+    <update id="updateStuMessageDao" parameterType="com.example.demo.entity.StuMessage">
+        update stu_message
+        set stu_number = #{stuNumber},
+            stu_name   = #{stuName},
+            stu_sex    = #{stuSex}
+        where stu_number = #{stuNumber}
+    </update>
+</mapper>

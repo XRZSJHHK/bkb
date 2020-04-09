@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>student</title>
+    <script src="jquery.js"></script>
+    <script type="text/javascript">
+        function ins() {
+            var number = document.getElementById("number_number").value;
+            var name = document.getElementById("name").value;
+            var sex = document.getElementById("sex").value;
+            var data = {
+                stuNumber: number,
+                stuName: name,
+                stuSex: sex
+            };
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:8080/insert",
+                data: data,
+                dataType: 'json',
+                success: function (result) {
+                    console.log(result);
+                    if (result == 0) {
+                        alert("添加失败！");
+                    } else {
+                        alert("添加成功！");
+                    }
+                }
+            });
+        }
+
+        function upd() {
+            var number = document.getElementById("number_number").value;
+            var name = document.getElementById("name").value;
+            var sex = document.getElementById("sex").value;
+            var data = {
+                stuNumber: number,
+                stuName: name,
+                stuSex: sex
+            };
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:8080/update",
+                data: data,
+                dataType: 'json',
+                success: function (result) {
+                    console.log(result);
+                    if (result == 0) {
+                        alert("更新失败！");
+                    } else {
+                        alert("更新成功！");
+                    }
+                }
+            });
+        }
+
+        function del() {
+            var number = document.getElementById("number").value;
+            var data = {
+                stuNumber: number
+            };
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:8080/delete",
+                data: data,
+                dataType: 'json',
+                success: function (result) {
+                    console.log(result);
+                    if (result == 0) {
+                        alert("删除失败！");
+                    } else {
+                        alert("删除成功！");
+                    }
+                }
+            });
+        }
+
+        function ret() {
+            var number = document.getElementById("number").value;
+            var data = {
+                stuNumber: number
+            };
+            if (data.stuNumber == '') {
+                $("#tableHead tbody").html("");
+                $.ajax({
+                    type: "GET",
+                    url: "http://localhost:8080/retrieve/all",
+                    data: data,
+                    dataType: 'json',
+                    success: function (result) {
+                        console.log(result);
+                        var item;
+                        for (var i = 0; i < result.length; i++) {
+                            item = "<tr><td>" + result[i].stuNumber + "</td><td>" + result[i].stuName + "</td><td>" + result[i].stuSex + "</td></tr>";
+                            $('.tableHead tbody').append(item);
+                        }
+                    }
+                });
+            } else {
+                $("#tableHead tbody").html("");
+                $.ajax({
+                    type: "GET",
+                    url: "http://localhost:8080/retrieve",
+                    data: data,
+                    dataType: 'json',
+                    success: function (result) {
+                        $("#ans_number").html(result.stuNumber);
+                        $("#ans_name").html(result.stuName);
+                        $("#ans_sex").html(result.stuSex);
+                        console.log(result);
+                        var item = "<tr><td>" + result.stuNumber + "</td><td>" + result.stuName + "</td><td>" + result.stuSex + "</td></tr>";
+                        $('.tableHead tbody').append(item);
+                    }
+                });
+            }
+        }
+    </script>
+<body>
+<div style="width:100%;text-align: center">
+    <h1>测试</h1>
+    <br/>
+    <input id="number_number" placeholder="请输入学号"/>
+    <input id="name" placeholder="请输入姓名"/>
+    <input id="sex" placeholder="请输入性别"/>
+    <button onclick="ins()">添加</button>
+    <button onclick="upd()">更新</button>
+    <br/>
+    <br/>
+    <input id="number" placeholder="请输入学号"/>
+    <button onclick="ret()">查询</button>
+    <button onclick="del()">删除</button>
+    <br/>
+    <br/>
+    <table class="tableHead" id="tableHead" border="1" cellspacing="0" style="margin: 0 auto">
+        <thead>
+        <tr>
+            <th style="width:85px;">学号</th>
+            <th style="width:85px;">姓名</th>
+            <th style="width:85px;">性别</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+</body>
+</html>
