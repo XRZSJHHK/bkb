@@ -16,7 +16,7 @@
             };
             $.ajax({
                 type: "GET",
-                url: "http://localhost:8080/insert",
+                url: "http://localhost:80/insert",
                 data: data,
                 dataType: 'json',
                 success: function (result) {
@@ -41,7 +41,7 @@
             };
             $.ajax({
                 type: "GET",
-                url: "http://localhost:8080/update",
+                url: "http://localhost:80/update",
                 data: data,
                 dataType: 'json',
                 success: function (result) {
@@ -62,7 +62,7 @@
             };
             $.ajax({
                 type: "GET",
-                url: "http://localhost:8080/delete",
+                url: "http://localhost:80/delete",
                 data: data,
                 dataType: 'json',
                 success: function (result) {
@@ -85,7 +85,7 @@
                 $("#tableHead tbody").html("");
                 $.ajax({
                     type: "GET",
-                    url: "http://localhost:8080/retrieve/all",
+                    url: "http://localhost:80/retrieve/all",
                     data: data,
                     dataType: 'json',
                     success: function (result) {
@@ -101,7 +101,7 @@
                 $("#tableHead tbody").html("");
                 $.ajax({
                     type: "GET",
-                    url: "http://localhost:8080/retrieve",
+                    url: "http://localhost:80/retrieve",
                     data: data,
                     dataType: 'json',
                     success: function (result) {
