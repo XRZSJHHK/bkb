@@ -32,6 +32,7 @@ public class School {
         this.schoolIntroduction = schoolIntroduction;
     }
 
+
     public String getLabelTwo() {
         return labelTwo;
     }

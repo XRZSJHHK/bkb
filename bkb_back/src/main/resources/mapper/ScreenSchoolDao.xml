@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 声明接口地址 -->
+<mapper namespace="com.example.demo.dao.ScreenSchoolDao">
+    <!-- 绑定接口方法 -->
+    <select id="screenDao" parameterType="String" resultType="com.example.demo.entity.School">
+        select *
+        from school
+        where 1=1
+        <if test="labelTwo!='' ">
+            and label_two= #{labelTwo}
+        </if>
+        <if test="labelNine!='' ">
+            and label_nine= #{labelNine}
+        </if>
+        <if test="labelSelf!='' ">
+            and label_self=#{labelSelf}
+        </if>
+    </select>
+</mapper>
