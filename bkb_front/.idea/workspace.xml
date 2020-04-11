@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d62a1bdf-9694-4c4e-90d4-4b7c12b24baa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../bkb_back/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../bkb_back/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bkb_back/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../bkb_back/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="d62a1bdf-9694-4c4e-90d4-4b7c12b24baa" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -148,11 +143,12 @@
       <workItem from="1586407215630" duration="232000" />
       <workItem from="1586480676343" duration="457000" />
       <workItem from="1586481899724" duration="81000" />
+      <workItem from="1586490092254" duration="709000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85433000" />
+    <option name="totallyTimeSpent" value="86142000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
