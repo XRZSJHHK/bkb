@@ -12,7 +12,7 @@ public class SearchSchoolController {
     @Autowired
     SearchSchoolService searchSchoolService;
     @RequestMapping(value="/searchSchool",method = RequestMethod.GET)
-    public School searchSchool(String schoolName){
+    public School searchSchoolController(String schoolName){
         return searchSchoolService.searchService(schoolName);
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 public class SearchSchoolServiceImpl implements SearchSchoolService {
     @Autowired
     SearchSchoolDao searchSchoolDao;
+    @Override
     public School searchService(String schoolName){
         return searchSchoolDao.searchDao(schoolName);
     }
