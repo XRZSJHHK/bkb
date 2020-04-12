@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 声明接口地址 -->
+<mapper namespace="com.example.demo.dao.AddSchoolCommentDao">
+    <!-- 绑定接口方法 -->
+    <select id="getUserNameDao" parameterType="String" resultType="String">
+        select user_name
+        from account
+        where token = #{token}
+    </select>
+    <insert id="insertSchoolCommentDao" parameterType="String">
+        insert into school_comment(school_id,user_name,school_comment_message,school_comment_time)
+        values(#{schoolId},#{userName},#{schoolCommentMessage},#{schoolCommentTime})
+    </insert>
+</mapper>

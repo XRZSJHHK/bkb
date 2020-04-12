@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 声明接口地址 -->
+<mapper namespace="com.example.demo.dao.AddMajorCommentDao">
+    <!-- 绑定接口方法 -->
+    <select id="getUserNameDao" parameterType="String" resultType="String">
+        select user_name
+        from account
+        where token = #{token}
+    </select>
+    <insert id="insertMajorCommentDao" parameterType="String">
+        insert into major_comment(major_id,user_name,major_comment_message,major_comment_time)
+        values(#{majorId},#{userName},#{majorCommentMessage},#{majorCommentTime})
+    </insert>
+</mapper>
