@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 声明接口地址 -->
+<mapper namespace="com.example.demo.dao.MajorAnalysisDao">
+    <!-- 绑定接口方法 -->
+    <select id="getMajorAnalysisDao" parameterType="String" resultType="com.example.demo.entity.Major" >
+        select school_id, major_id, major_name, sign_up_sixteen, sign_up_seventeen, sign_up_eighteen, sign_up_nineteen, sign_up_twenty, low_score_sixteen, low_score_seventeen, low_score_eighteen, low_score_nineteen, low_score_twenty
+        from major
+        where major_id = #{majorId}
+    </select>
+</mapper>

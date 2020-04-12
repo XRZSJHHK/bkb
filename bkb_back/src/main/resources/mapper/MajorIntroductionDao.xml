@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 声明接口地址 -->
+<mapper namespace="com.example.demo.dao.MajorIntroductionDao">
+    <!-- 绑定接口方法 -->
+    <select id="getMajorIntroductionDao" parameterType="String" resultType="String" >
+        select major_introduction
+        from major
+        where major_id = #{majorId}
+    </select>
+</mapper>
