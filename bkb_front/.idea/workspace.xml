@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d62a1bdf-9694-4c4e-90d4-4b7c12b24baa" name="Default Changelist" comment="" />
+    <list default="true" id="d62a1bdf-9694-4c4e-90d4-4b7c12b24baa" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/vuex/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/vuex/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/vuex/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/vuex/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/vuex/dist/logger.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/vuex/dist/logger.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/vuex/dist/logger.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/vuex/dist/logger.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/vuex/dist/vuex.common.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/vuex/dist/vuex.common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/vuex/dist/vuex.esm.browser.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/vuex/dist/vuex.esm.browser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/vuex/dist/vuex.esm.browser.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/vuex/dist/vuex.esm.browser.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/vuex/dist/vuex.esm.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/vuex/dist/vuex.esm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/vuex/dist/vuex.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/vuex/dist/vuex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/vuex/dist/vuex.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/vuex/dist/vuex.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/vuex/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/vuex/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/vuex/types/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/vuex/types/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/vuex/types/helpers.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/vuex/types/helpers.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/vuex/types/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/vuex/types/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/vuex/types/vue.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/vuex/types/vue.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -18,6 +37,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -45,8 +65,10 @@
         <option value="$PROJECT_DIR$/src/view/index.vue" />
         <option value="$PROJECT_DIR$/src/view/crawling.vue" />
         <option value="$PROJECT_DIR$/src/view/school.vue" />
-        <option value="$PROJECT_DIR$/src/App.vue" />
         <option value="$PROJECT_DIR$/src/view/major.vue" />
+        <option value="$PROJECT_DIR$/src/main.js" />
+        <option value="$PROJECT_DIR$/src/App.vue" />
+        <option value="$PROJECT_DIR$/src/store/index.js" />
       </list>
     </option>
   </component>
@@ -62,8 +84,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
       <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="bkb_front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bkb_front" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -144,16 +176,17 @@
       <workItem from="1586480676343" duration="457000" />
       <workItem from="1586481899724" duration="81000" />
       <workItem from="1586490092254" duration="709000" />
+      <workItem from="1586780374546" duration="3527000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86142000" />
+    <option name="totallyTimeSpent" value="89669000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49759614" visible="true" weight="0.20907739" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49759614" visible="true" weight="0.20907739" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" sideWeight="0.50240386" side_tool="true" weight="0.20461309" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -167,7 +200,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32903227" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.30967742" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.30967742" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -296,16 +329,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/test1.vue" />
-    <entry file="file://$PROJECT_DIR$/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="9" lean-forward="true" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/router/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="274">
@@ -365,13 +388,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="66" column="8" lean-forward="true" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/major.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -380,6 +396,33 @@
             <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#Content#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#1;n#div#1;n#div#0;n#Content#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#Content#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+          <folding>
+            <element signature="e#1#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="2" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
           </folding>
         </state>
       </provider>

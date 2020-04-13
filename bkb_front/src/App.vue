@@ -6,7 +6,11 @@
           <!--          <div><img class="layout-logo" src="./assets/logo.png"/></div>-->
           <div class="layout-logo">报考吧</div>
           <div class="layout-nav">
-            <MenuItem name="1" @click.native="login()">
+            <MenuItem name="1">
+              <div v-if="this.$store.state.token==''">未登录</div>
+              <div v-else>您好，{{this.$store.state.userName}}</div>
+            </MenuItem>
+            <MenuItem name="2" @click.native="login()">
               <Icon type="ios-navigate"></Icon>
               登录/注册
             </MenuItem>
@@ -60,11 +64,11 @@
       return {}
     },
     mounted() {
-       //this.toIndex();
+      //this.toIndex();
     },
     methods: {
-      login(){
-
+      login() {
+        this.$store.commit("changeToken", "JSDALKFJLAKDJF")
       },
       toIndex() {
         this.$router.push('/index');
@@ -96,20 +100,20 @@
     position: relative;
     //top: 11px;
     left: 16px;
-    color:white;
-    font-size:30px;
+    color: white;
+    font-size: 30px;
     text-align: center;
   }
 
   .layout-nav {
-    width: 200px;
+    width: 400px;
     height: 60px;
     margin: 0 auto;
     margin-right: 0px;
 
     .ivu-menu-item {
       text-align: center;
-      width: 158px;
+      width: 200px;
       font-family: "Microsoft YaHei";
       font-size: 14px;
       font-weight: bold;
