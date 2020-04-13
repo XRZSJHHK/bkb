@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 声明接口地址 -->
+<mapper namespace="com.example.demo.dao.LoginDao">
+    <!-- 绑定接口方法 -->
+    <select id="testAccountDao" parameterType="String" resultType="com.example.demo.entity.Account" >
+        select *
+        from account
+        where user_name = #{userName}
+    </select>
+</mapper>
