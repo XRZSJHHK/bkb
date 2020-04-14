@@ -105,15 +105,42 @@
         myUserPassword: '',
       }
     },
+    created() {
+      //当sessionStorage里存有store时，取出
+      if (sessionStorage.getItem("store")) {
+        this.$store.replaceState(
+          Object.assign(
+            {},
+            this.$store.state,
+            JSON.parse(sessionStorage.getItem("store"))
+          )
+        );
+        sessionStorage.removeItem("store") //取出后，再清空sessionStorage
+      }
+
+      //在页面刷新时将vuex里的信息保存到sessionStorage里
+      window.addEventListener("beforeunload", () => {
+        sessionStorage.setItem("store", JSON.stringify(this.$store.state));
+      });
+    },
     mounted() {
 
     },
     methods: {
       login_register() {
+        this.myUserName='';
+        this.myUserPassword='';
+        this.flag1 = 1;
         this.modal1 = true;
       },
-      logout(){
-
+      logout() {
+        if (confirm("您确定要注销登录吗？")) {
+          this.$store.commit("changeUserName", '');
+          this.$store.commit("changeUserIdentity", '');
+          this.$store.commit("changeToken", '');
+          this.$store.commit("schoolId", '');
+          this.$store.commit("majorId", '');
+        }
       },
       go_login() {
         axios({
@@ -149,7 +176,7 @@
           },
           dataType: 'json',
         }).then((res) => {
-          if (res.data=== -2) {
+          if (res.data === -2) {
             this.$Message.error('注册失败，用户名已存在');
           } else if (res.data === 1) {
             this.$Message.success('注册成功');
