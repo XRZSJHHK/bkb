@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    userName: '测试用户名张三',
+    userName: '',
     userIdentity: '',
     token: '',
     schoolId: '',

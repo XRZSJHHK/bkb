@@ -3,16 +3,21 @@
     <Layout>
       <Header>
         <Menu mode="horizontal" theme="dark" active-name="1">
-          <!--          <div><img class="layout-logo" src="./assets/logo.png"/></div>-->
           <div class="layout-logo">报考吧</div>
           <div class="layout-nav">
             <MenuItem name="1">
-              <div v-if="this.$store.state.token==''">未登录</div>
+              <div v-if="this.$store.state.token===''">未登录</div>
               <div v-else>您好，{{this.$store.state.userName}}</div>
             </MenuItem>
-            <MenuItem name="2" @click.native="login()">
-              <Icon type="ios-navigate"></Icon>
-              登录/注册
+            <MenuItem name="2">
+              <div v-if="this.$store.state.token===''" @click="login_register()" style="cursor: pointer">
+                <Icon type="ios-navigate"></Icon>
+                登录/注册
+              </div>
+              <div v-else @click="logout()" style="cursor: pointer">
+                <Icon type="ios-navigate"></Icon>
+                注销
+              </div>
             </MenuItem>
           </div>
         </Menu>
@@ -45,6 +50,37 @@
         </Layout>
       </Layout>
     </Layout>
+    <Modal
+      v-model="modal1"
+      :mask-closable="false"
+      width="300px;">
+      <div>
+        <div style="width:200px;margin:0 auto;margin-bottom: 10px!important;">
+          <Input type="text" v-model="myUserName" placeholder="Username">
+            <Icon type="ios-person-outline" slot="prepend"></Icon>
+          </Input>
+        </div>
+        <div style="width:200px;margin:0 auto">
+          <Input type="password" v-model="myUserPassword" placeholder="Password">
+            <Icon type="ios-lock-outline" slot="prepend"></Icon>
+          </Input>
+        </div>
+      </div>
+      <div slot="header">
+        <div v-if="flag1===1"><h3>登录页面</h3></div>
+        <div v-else><h3>注册页面</h3></div>
+      </div>
+      <div slot="footer">
+        <div v-if="flag1===1">
+          <span style="cursor: pointer" @click="flag1=0">&lt 去注册</span>
+          <Button type="primary" style="margin-left:140px;" @click="go_login()">登录</Button>
+        </div>
+        <div v-else>
+          <span style="cursor: pointer" @click="flag1=1">&lt 去登录</span>
+          <Button type="primary" style="margin-left:140px;" @click="go_register()">注册</Button>
+        </div>
+      </div>
+    </Modal>
   </div>
 </template>
 
@@ -52,6 +88,7 @@
   import index from './view/index'
   import retrieve from './view/retrieve'
   import crawling from './view/crawling'
+  import axios from 'axios';
 
   export default {
     name: '',
@@ -61,14 +98,65 @@
       crawling,
     },
     data() {
-      return {}
+      return {
+        modal1: false,
+        flag1: 1,
+        myUserName: '',
+        myUserPassword: '',
+      }
     },
     mounted() {
-      //this.toIndex();
+
     },
     methods: {
-      login() {
-        this.$store.commit("changeToken", "JSDALKFJLAKDJF")
+      login_register() {
+        this.modal1 = true;
+      },
+      logout(){
+
+      },
+      go_login() {
+        axios({
+          url: '/api/login',
+          method: 'post',
+          params: {
+            userName: this.myUserName,
+            userPassword: this.myUserPassword
+          },
+          dataType: 'json',
+        }).then((res) => {
+          if (res.data.userPassword === '0') {
+            this.$Message.error('用户名不存在');
+          } else if (res.data.userPassword === '1') {
+            this.$Message.error('密码错误');
+          } else {
+            this.$store.commit("changeUserName", res.data.userName);
+            this.$store.commit("changeUserIdentity", res.data.userIdentity);
+            this.$store.commit("changeToken", res.data.token);
+            this.modal1 = false;
+          }
+        }).catch((error) => {
+          this.$Message.error(error);
+        });
+      },
+      go_register() {
+        axios({
+          url: '/api/register',
+          method: 'post',
+          params: {
+            userName: this.myUserName,
+            userPassword: this.myUserPassword
+          },
+          dataType: 'json',
+        }).then((res) => {
+          if (res.data=== -2) {
+            this.$Message.error('注册失败，用户名已存在');
+          } else if (res.data === 1) {
+            this.$Message.success('注册成功');
+          }
+        }).catch((error) => {
+          this.$Message.error(error);
+        });
       },
       toIndex() {
         this.$router.push('/index');
@@ -118,6 +206,7 @@
       font-size: 14px;
       font-weight: bold;
       color: #ffffff;
+      cursor: auto !important;
     }
   }
 

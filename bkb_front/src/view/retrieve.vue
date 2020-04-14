@@ -12,7 +12,7 @@
       <Select v-model="selectValue2" size="small" style="width:100px">
         <Option v-for="item in selectList2" :value="item.value" :key="item.value">{{ item.label }}</Option>
       </Select>
-      &#12288;&#12288;双一流
+      &#12288;&#12288;自划线
       <Select v-model="selectValue3" size="small" style="width:100px">
         <Option v-for="item in selectList3" :value="item.value" :key="item.value">{{ item.label }}</Option>
       </Select>
@@ -62,7 +62,7 @@
             key: 'platform'
           },
           {
-            title: '是否"双一流"',
+            title: '是否"自划线"',
             key: 'date'
           },
           {
@@ -77,13 +77,13 @@
             title: '01',
             abstract: '中国石油大学（华东）',
             platform: '211',
-            date: '一流学科'
+            date: '否'
           },
           {
             title: '02',
             abstract: '中国石油大学（北京）',
             platform: '211',
-            date: '一流学科'
+            date: '否'
           }
         ],
         selectList2: [
@@ -106,12 +106,12 @@
             label: '不限'
           },
           {
-            value: '一流高校',
-            label: '一流高校'
+            value: '是',
+            label: '是'
           },
           {
-            value: '一流学科',
-            label: '一流学科'
+            value: '否',
+            label: '否'
           },
         ],
         searchValue1: '',
