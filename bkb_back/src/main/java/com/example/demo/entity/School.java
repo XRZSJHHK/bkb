@@ -4,9 +4,9 @@ public class School {
     private String schoolId;
     private String schoolName;
     private String schoolIntroduction;
-    private String labelTwo;
-    private String labelNine;
-    private String labelSelf;
+    private Integer labelTwo;
+    private Integer labelNine;
+    private Integer labelSelf;
 
     public String getSchoolId() {
         return schoolId;
@@ -33,27 +33,27 @@ public class School {
     }
 
 
-    public String getLabelTwo() {
+    public Integer getLabelTwo() {
         return labelTwo;
     }
 
-    public void setLabelTwo(String labelTwo) {
+    public void setLabelTwo(Integer labelTwo) {
         this.labelTwo = labelTwo;
     }
 
-    public String getLabelNine() {
+    public Integer getLabelNine() {
         return labelNine;
     }
 
-    public void setLabelNine(String labelNine) {
+    public void setLabelNine(Integer labelNine) {
         this.labelNine = labelNine;
     }
 
-    public String getLabelSelf() {
+    public Integer getLabelSelf() {
         return labelSelf;
     }
 
-    public void setLabelSelf(String labelSelf) {
+    public void setLabelSelf(Integer labelSelf) {
         this.labelSelf = labelSelf;
     }
 }

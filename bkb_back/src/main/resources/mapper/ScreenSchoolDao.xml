@@ -10,13 +10,13 @@
         select school_id, school_name, label_two, label_nine, label_self
         from school
         where 1=1
-        <if test="labelTwo!='' ">
+        <if test="labelTwo!=2 ">
             and label_two= #{labelTwo}
         </if>
-        <if test="labelNine!='' ">
+        <if test="labelNine!=2 ">
             and label_nine= #{labelNine}
         </if>
-        <if test="labelSelf!='' ">
+        <if test="labelSelf!=2 ">
             and label_self=#{labelSelf}
         </if>
     </select>

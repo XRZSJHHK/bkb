@@ -26,11 +26,12 @@
         </div>
         <div v-if="flag===2">
           <div>
-            <Card v-for="(item,i) in module2_data" :key="item.id">
-              {{item.id}}楼&#160;&#160;&#160;&#160;{{item.user_name}}：{{item.comment}}
+            <Card v-for="(item,i) in module2_data" :key="item.schoolCommentId">
+              {{item.schoolCommentId}}楼&#160;&#160;&#160;&#160;{{item.userName}}：{{item.schoolCommentMessage}}&#160;&#160;&#160;&#160;{{item.schoolCommentTime}}
             </Card>
           </div>
-          <div @click="add_comment()" style="width:30px;height:30px;position:fixed;bottom:100px;right:50px;cursor:pointer">
+          <div @click="add_comment()"
+               style="width:30px;height:30px;position:fixed;bottom:100px;right:50px;cursor:pointer">
             <img src="../assets/icon/icon_list_edit_selected.png" style="width:30px;height: 30px;">
           </div>
         </div>
@@ -38,7 +39,7 @@
           <div>
             <Table size="small" :columns="columns" :data="module3_data">
               <template slot-scope="{ row, index }" slot="action">
-            <span @click="show(index)" style="cursor: pointer">
+            <span @click="show(index,row)" style="cursor: pointer">
               <img src="../assets/icon/icon_list_look_normal.png" alt="" style="position: relative; top: 3px">
               <span>查看详情</span>
             </span>
@@ -60,6 +61,8 @@
 </template>
 
 <script>
+  import axios from 'axios'
+
   export default {
     name: "school",
     data() {
@@ -67,22 +70,12 @@
         modal1: false,
         theme1: 'light',
         flag: 1,
-        module1_data: "中国石油大学是教育部直属全国重点大学，是国家“211工程”重点建设和开展“985工程优势学科创新平台”建设并建有研究生院的高校之一。2017年学校进入国家“双一流”建设高校行列。中国石油大学（华东）是教育部和五大能源企业集团公司、教育部和山东省人民政府共建的高校，是石油石化高层次人才培养的重要基地，被誉为“石油科技、管理人才的摇篮”，现已成为一所以工为主、石油石化特色鲜明、多学科协调发展的大学。",
-        module2_data:
-          [
-            {id: 1, user_name: "张三", comment: '中国石油大学（华东）这所学校很漂亮'},
-            {id: 2, user_name: "李四", comment: '一楼说的对'},
-            {id: 3, user_name: "王二", comment: '同意二楼的话'},
-            {id: 4, user_name: "麻子", comment: '三楼没毛病'},
-          ],
+        module1_data: '',
+        module2_data: [],
         columns: [
           {
-            title: '编号',
-            key: 'title'
-          },
-          {
             title: '专业名称',
-            key: 'abstract'
+            key: 'majorName'
           },
           {
             title: '操作',
@@ -93,40 +86,68 @@
         ],
         module3_data: [
           {
-            title: '001',
-            abstract: '软件工程',
+            majorName: '001',
           },
-          {
-            title: '002',
-            abstract: '计算机科学与技术',
-          },
-          {
-            title: '003',
-            abstract: '物联网工程',
-          }
         ],
       }
     },
     methods: {
       module1() {
         this.flag = 1;
+        axios({
+          url: '/api/schoolIntroduction',
+          method: 'get',
+          params: {
+            schoolId: this.$store.state.schoolId
+          },
+          dataType: 'json',
+        }).then((res) => {
+          this.module1_data = res.data;
+        }).catch((error) => {
+          this.$Message.error(error);
+        });
       },
       module2() {
         this.flag = 2;
+        axios({
+          url: '/api/schoolComment',
+          method: 'get',
+          params: {
+            schoolId: this.$store.state.schoolId
+          },
+          dataType: 'json',
+        }).then((res) => {
+          this.module2_data = res.data;
+        }).catch((error) => {
+          this.$Message.error(error);
+        });
       },
       module3() {
         this.flag = 3;
+        axios({
+          url: '/api/schoolMajor',
+          method: 'get',
+          params: {
+            schoolId: this.$store.state.schoolId
+          },
+          dataType: 'json',
+        }).then((res) => {
+          this.module3_data = res.data;
+        }).catch((error) => {
+          this.$Message.error(error);
+        });
       },
-      show(index){
+      show(index,row) {
+        this.$store.commit("changeMajorId",row.majorId);
         this.$router.push('/school/major');
       },
-      add_comment(){
-        this.modal1=true;
+      add_comment() {
+        this.modal1 = true;
       },
-      ok () {
+      ok() {
         this.$Message.info('点击了确定');
       },
-      cancel () {
+      cancel() {
         this.$Message.info('点击了取消');
       }
     }

@@ -8,25 +8,32 @@
       &#160;&#160;&#160;&#160;&#160;&#160;
       <Input v-model="searchValue1" clearable size="small" suffix="ios-search" placeholder="请输入学校名称…"
              style="width:300px;"/>
-      &#12288;&#12288;211/985
-      <Select v-model="selectValue2" size="small" style="width:100px">
+      <Button type="primary" style="height:24px;float:none !important;margin-top:0 !important;"
+              @click="data_search1">搜索
+      </Button>
+      &#12288;&#12288;211
+      <Select v-model="selectValue2" size="small" style="width:80px">
         <Option v-for="item in selectList2" :value="item.value" :key="item.value">{{ item.label }}</Option>
       </Select>
-      &#12288;&#12288;自划线
-      <Select v-model="selectValue3" size="small" style="width:100px">
+      &#12288;985
+      <Select v-model="selectValue3" size="small" style="width:80px">
         <Option v-for="item in selectList3" :value="item.value" :key="item.value">{{ item.label }}</Option>
       </Select>
-      &#160;
+      &#12288;自划线
+      <Select v-model="selectValue4" size="small" style="width:80px">
+        <Option v-for="item in selectList4" :value="item.value" :key="item.value">{{ item.label }}</Option>
+      </Select>
+      &#12288;
       <Button type="primary" style="height:24px;float:none !important;margin-top:0 !important;"
-              @click="set_data_search">搜索
+              @click="data_search2">筛选
       </Button>
     </div>
     <Content :style="{padding: '24px', minHeight: '600px', background: '#fff'}">
-      <div class="message">根据您的条件，已为您筛选出<span>2</span>所高校</div>
+      <div class="message">根据您的条件，已为您查找出<span>{{schoolNumber}}</span>所高校</div>
       <div>
-        <Table size="small" :columns="columns" :data="data">
+        <Table size="small" :columns="columns1" :data="data1">
           <template slot-scope="{ row, index }" slot="action">
-            <span @click="show(index)" style="cursor: pointer">
+            <span @click="show(index,row)" style="cursor: pointer">
               <img src="../assets/icon/icon_list_look_normal.png" alt="" style="position: relative; top: 3px">
               <span>查看详情</span>
             </span>
@@ -48,22 +55,22 @@
     name: "retrieve",
     data() {
       return {
-        columns: [
-          {
-            title: '编号',
-            key: 'title'
-          },
+        columns1: [
           {
             title: '学校名称',
-            key: 'abstract'
+            key: 'schoolName'
           },
           {
-            title: '是否"211/985"',
-            key: 'platform'
+            title: '是否"211"',
+            key: 'labelTwo'
+          },
+          {
+            title: '是否"985"',
+            key: 'labelNine'
           },
           {
             title: '是否"自划线"',
-            key: 'date'
+            key: 'labelSelf'
           },
           {
             title: '操作',
@@ -72,77 +79,102 @@
             align: 'center'
           }
         ],
-        data: [
-          {
-            title: '01',
-            abstract: '中国石油大学（华东）',
-            platform: '211',
-            date: '否'
-          },
-          {
-            title: '02',
-            abstract: '中国石油大学（北京）',
-            platform: '211',
-            date: '否'
-          }
-        ],
+        data1: [],
         selectList2: [
           {
-            value: '不限',
-            label: '不限'
+            value: 2,
+            label: '不限制'
           },
           {
-            value: '211',
-            label: '211'
+            value: 1,
+            label: '是'
           },
           {
-            value: '985',
-            label: '985'
+            value: 0,
+            label: '否'
           },
         ],
         selectList3: [
           {
-            value: '不限',
-            label: '不限'
+            value: 2,
+            label: '不限制'
           },
           {
-            value: '是',
+            value: 1,
             label: '是'
           },
           {
-            value: '否',
+            value: 0,
+            label: '否'
+          },
+        ],
+        selectList4: [
+          {
+            value: 2,
+            label: '不限制'
+          },
+          {
+            value: 1,
+            label: '是'
+          },
+          {
+            value: 0,
             label: '否'
           },
         ],
         searchValue1: '',
-        selectValue2: '不限',
-        selectValue3:'不限',
-        timeRange: [],
-        select_date: '',
-        file_path: ''
+        selectValue2: 2,
+        selectValue3: 2,
+        selectValue4: 2,
+        schoolNumber: 0,
       }
     },
     methods: {
-      show(index) {
+      show(index,row) {
+        this.$store.commit("changeSchoolId",row.schoolId);
         this.$router.push('/school');
       },
-      get_date(data) {
-        this.select_date = data
-      },
-      async data_export() {
-        // const {data} = await axios.get('', {
-        //   file_path: this.file_path,
-        // })
-      },
+      data_search1() {
+        this.data1=[];
+        axios({
+          url: '/api/searchSchool',
+          method: 'get',
+          params: {
+            schoolName: this.searchValue1
+          },
+          dataType: 'json',
+        }).then((res) => {
+          if(res.data==''){
 
-      async set_data_search() {
-        const {data} = await axios.get('', {
-          keywords: this.searchValue1,
-          platform: this.selectValue2,
-          date: this.select_date
-        })
-        // console.log(data)
-      }
+          }else{
+            this.data1.push(res.data);
+            this.schoolNumber = this.data1.length;
+          }
+        }).catch((error) => {
+          this.$Message.error(error);
+        });
+      },
+      data_search2() {
+        axios({
+          url: '/api/screenSchool',
+          method: 'get',
+          params: {
+            labelTwo:this.selectValue2,
+            labelNine:this.selectValue3,
+            labelSelf:this.selectValue4
+          },
+          dataType: 'json',
+        }).then((res) => {
+          if(res.data==''){
+
+          }else{
+            this.data1=res.data;
+            this.schoolNumber = this.data1.length;
+          }
+        }).catch((error) => {
+          this.$Message.error(error);
+        });
+      },
     }
   }
 </script>

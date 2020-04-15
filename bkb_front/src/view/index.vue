@@ -8,7 +8,6 @@
       &#160;&#160;&#160;&#160;&#160;&#160;
       <Input v-model="searchValue1" clearable size="small" suffix="ios-search" placeholder="请输入关键词…"
              style="width:300px;"/>
-      &#160;
       <Button type="primary" style="height:24px;float:none !important;margin-top:0 !important;"
               @click="">搜索
       </Button>

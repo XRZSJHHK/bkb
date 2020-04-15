@@ -12,7 +12,7 @@ public class ScreenSchoolServiceImpl implements ScreenSchoolService {
     @Autowired
     ScreenSchoolDao screenSchoolDao;
     @Override
-    public List<School> screenService(String labelTwo, String labelNine, String labelSelf){
+    public List<School> screenService(int labelTwo, int labelNine, int labelSelf){
         return screenSchoolDao.screenDao(labelTwo,labelNine,labelSelf);
     }
 }

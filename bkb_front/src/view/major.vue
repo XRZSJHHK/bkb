@@ -28,7 +28,7 @@
         <div v-if="flag===2">
           <div>
             <Card v-for="(item,i) in module2_data" :key="item.id">
-              {{item.id}}楼&#160;&#160;&#160;&#160;{{item.user_name}}：{{item.comment}}
+              {{item.majorCommentId}}楼&#160;&#160;&#160;&#160;{{item.userName}}：{{item.majorCommentMessage}}&#160;&#160;&#160;&#160;{{item.majorCommentTime}}
             </Card>
           </div>
           <div @click="add_comment()"
@@ -66,6 +66,7 @@
 
 <script>
   import echarts from 'echarts';
+  import axios from 'axios'
 
   export default {
     name: "major",
@@ -74,21 +75,41 @@
         modal1:false,
         theme1: 'light',
         flag: 1,
-        module1_data: "中国石油大学（华东）软件工程专业开设于……，软件工程是一门研究用工程化方法构建和维护有效的、实用的和高质量的软件的学科。它涉及程序设计语言、数据库、软件开发工具、系统平台、标准、设计模式等方面。",
-        module2_data:
-          [
-            {id: 1, user_name: "张三", comment: '软件工程专业挺好的'},
-            {id: 2, user_name: "李四", comment: '就业率高'},
-          ],
+        module1_data: '',
+        module2_data: [],
         module3_data: [],
       }
     },
     methods: {
       module1() {
         this.flag = 1;
+        axios({
+          url: '/api/majorIntroduction',
+          method: 'get',
+          params: {
+            majorId: this.$store.state.majorId
+          },
+          dataType: 'json',
+        }).then((res) => {
+          this.module1_data = res.data;
+        }).catch((error) => {
+          this.$Message.error(error);
+        });
       },
       module2() {
         this.flag = 2;
+        axios({
+          url: '/api/majorComment',
+          method: 'get',
+          params: {
+            majorId: this.$store.state.majorId
+          },
+          dataType: 'json',
+        }).then((res) => {
+          this.module2_data = res.data;
+        }).catch((error) => {
+          this.$Message.error(error);
+        });
       },
       module3() {
         this.flag = 3;

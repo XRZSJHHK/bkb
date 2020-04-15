@@ -14,7 +14,7 @@ public class ScreenSchoolController {
     @Autowired
     ScreenSchoolService screenSchoolService;
     @RequestMapping(value="/screenSchool",method = RequestMethod.GET)
-    public List<School> screenController(String labelTwo, String labelNine, String labelSelf){
+    public List<School> screenController(int labelTwo, int labelNine, int labelSelf){
         return screenSchoolService.screenService(labelTwo,labelNine,labelSelf);
     }
 }

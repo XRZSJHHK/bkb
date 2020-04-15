@@ -7,5 +7,5 @@ import java.util.List;
 
 @Repository
 public interface ScreenSchoolDao {
-    List<School> screenDao(String labelTwo, String labelNine, String labelSelf);
+    List<School> screenDao(int labelTwo, int labelNine, int labelSelf);
 }
