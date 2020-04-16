@@ -14,9 +14,15 @@
                 <Icon type="ios-navigate"></Icon>
                 登录/注册
               </div>
-              <div v-else @click="logout()" style="cursor: pointer">
+              <div v-else>
+                <span @click="logout()" style="cursor: pointer">
                 <Icon type="ios-navigate"></Icon>
                 注销
+                </span>
+                <span @click="modifyPassword()" style="cursor: pointer">
+                <Icon type="ios-navigate"></Icon>
+                修改密码
+                </span>
               </div>
             </MenuItem>
           </div>
@@ -128,8 +134,8 @@
     },
     methods: {
       login_register() {
-        this.myUserName='';
-        this.myUserPassword='';
+        this.myUserName = '';
+        this.myUserPassword = '';
         this.flag1 = 1;
         this.modal1 = true;
       },
@@ -140,6 +146,30 @@
           this.$store.commit("changeToken", '');
           this.$store.commit("schoolId", '');
           this.$store.commit("majorId", '');
+        }
+      },
+      modifyPassword(){
+        var newPassword=prompt("请输入新密码");
+        if(newPassword==null||newPassword==''){
+          this.$Message.error("修改失败")
+        }else{
+          axios({
+            url: '/api/modifyPassword',
+            method: 'post',
+            params: {
+              token: this.$store.state.token,
+              newPassword: newPassword,
+            },
+            dataType: 'json',
+          }).then((res) => {
+              if(res.data==1){
+                this.$Message.success("修改成功");
+              }else{
+                this.$Message.error("修改失败");
+              }
+          }).catch((error) => {
+            this.$Message.error(error);
+          });
         }
       },
       go_login() {

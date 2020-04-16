@@ -1,9 +1,9 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.School;
+import com.example.demo.entity.Rank;
 
 import java.util.List;
 
 public interface SchoolRankService {
-    List<School> getSchoolRankService();
+    List<Rank> getSchoolRankService();
 }

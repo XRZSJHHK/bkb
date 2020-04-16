@@ -145,8 +145,23 @@
           dataType: 'json',
         }).then((res) => {
           if(res.data==''){
-
+              this.$Message.info("没有查找到结果");
           }else{
+            if(res.data.labelTwo==1){
+              res.data.labelTwo='√'
+            }else{
+              res.data.labelTwo='×'
+            }
+            if(res.data.labelNine==1){
+              res.data.labelNine='√'
+            }else{
+              res.data.labelNine='×'
+            }
+            if(res.data.labelSelf==1){
+              res.data.labelSelf='√'
+            }else{
+              res.data.labelSelf='×'
+            }
             this.data1.push(res.data);
             this.schoolNumber = this.data1.length;
           }
@@ -155,6 +170,7 @@
         });
       },
       data_search2() {
+        this.data1=[];
         axios({
           url: '/api/screenSchool',
           method: 'get',
@@ -166,8 +182,9 @@
           dataType: 'json',
         }).then((res) => {
           if(res.data==''){
-
+            this.$Message.info("没有查找到结果");
           }else{
+            res.data.forEach(this.parseData);
             this.data1=res.data;
             this.schoolNumber = this.data1.length;
           }
@@ -175,6 +192,23 @@
           this.$Message.error(error);
         });
       },
+      parseData(item,index){
+        if(item.labelTwo==1){
+          item.labelTwo='√'
+        }else{
+          item.labelTwo='×'
+        }
+        if(item.labelNine==1){
+          item.labelNine='√'
+        }else{
+          item.labelNine='×'
+        }
+        if(item.labelSelf==1){
+          item.labelSelf='√'
+        }else{
+          item.labelSelf='×'
+        }
+      }
     }
   }
 </script>

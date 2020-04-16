@@ -28,7 +28,8 @@
         <div v-if="flag===2">
           <div>
             <Card v-for="(item,i) in module2_data" :key="item.id">
-              {{item.majorCommentId}}楼&#160;&#160;&#160;&#160;{{item.userName}}：{{item.majorCommentMessage}}&#160;&#160;&#160;&#160;{{item.majorCommentTime}}
+              {{item.majorCommentId}}楼&#160;&#160;&#160;&#160;{{item.userName}}：{{item.majorCommentMessage}}&#160;&#160;&#160;&#160;
+              <span style="color:darkgrey;font-size:5px;">{{item.majorCommentTime}}</span>
             </Card>
           </div>
           <div @click="add_comment()"
@@ -59,7 +60,7 @@
       :mask-closable="false"
       @on-ok="ok"
       @on-cancel="cancel">
-      <Input type="textarea" :rows="4" placeholder="请输入..."></Input>
+      <Input type="textarea" v-model="commentContent" :rows="4" placeholder="请输入..."></Input>
     </Modal>
   </div>
 </template>
@@ -78,7 +79,12 @@
         module1_data: '',
         module2_data: [],
         module3_data: [],
+        commentContent:'',
+        nowDate:'',
       }
+    },
+    mounted() {
+      this.module1();
     },
     methods: {
       module1() {
@@ -118,15 +124,47 @@
         this.$router.push('/school/major');
       },
       add_comment() {
-        this.modal1 = true;
-        //this.lineSimple();
+        if(this.$store.state.token==''){
+          this.$Message.error("请先登录");
+        }else{
+          this.commentContent = '';
+          this.modal1 = true;
+        }
       },
       ok() {
-        this.$Message.info('点击了确定');
+        axios({
+          url: 'http://quan.suning.com/getSysTime.do',
+          method: 'get',
+          params: {},
+          dataType: 'json',
+        }).then((res) => {
+          this.nowDate = res.data.sysTime2;
+          //console.log(this.nowDate);
+          axios({
+            url: '/api/addMajorComment',
+            method: 'post',
+            params: {
+              token: this.$store.state.token,
+              majorId: this.$store.state.majorId,
+              majorCommentMessage: this.commentContent,
+              majorCommentTime: this.nowDate,
+            },
+            dataType: 'json',
+          }).then((res) => {
+            //console.log(res.data);
+            if (res.data === 1) {
+              this.$Message.success("评论发表成功");
+              this.module2();
+            }
+          }).catch((error) => {
+            this.$Message.error(error);
+          });
+        }).catch((error) => {
+          this.$Message.error(error);
+        });
       },
-      cancel() {
-        this.$Message.info('点击了取消');
-      },
+      cancel() {},
+
       lineSimple() {
         var dom = document.getElementById("main");
         var myChart = echarts.init(dom);

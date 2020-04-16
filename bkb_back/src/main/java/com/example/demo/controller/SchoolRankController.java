@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.School;
+import com.example.demo.entity.Rank;
 import com.example.demo.service.SchoolRankService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +14,7 @@ public class SchoolRankController {
     @Autowired
     SchoolRankService schoolRankService;
     @RequestMapping(value="/schoolRank",method = RequestMethod.GET)
-    public List<School> getSchoolRankController(){
+    public List<Rank> getSchoolRankController(){
         return schoolRankService.getSchoolRankService();
     }
 }

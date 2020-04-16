@@ -5,13 +5,12 @@
       <BreadcrumbItem>热度排行</BreadcrumbItem>
     </Breadcrumb>
     <Content :style="{padding: '24px', minHeight: '600px', background: '#fff'}">
-      <div class="message">报考热度排名前<span>100</span>所高校
-<!--        <Button @click="add_keyWord" type="primary">添加关键词</Button>-->
+      <div class="message">报考热度排名前<span>{{schoolNumber}}</span>所高校
       </div>
       <div>
-        <Table size="small" :columns="columns" :data="data">
+        <Table size="small" :columns="columns" :data="data1">
           <template slot-scope="{ row, index }" slot="action">
-            <span @click="show(index)" style="cursor: pointer">
+            <span @click="show(index,row)" style="cursor: pointer">
               <img src="../assets/icon/icon_list_look_normal.png" alt="" style="position: relative; top: 3px">
               <span>查看详情</span>
             </span>
@@ -26,87 +25,97 @@
 </template>
 
 <script>
-    import '../assets/css/common.less'
-    import axios from 'axios'
-    export default {
-        name: "crawling",
-        data() {
-            return {
-              columns: [
-                {
-                  title: '排名',
-                  key: 'title'
-                },
-                {
-                  title: '学校名称',
-                  key: 'abstract'
-                },
-                {
-                  title: '是否"211/985"',
-                  key: 'platform'
-                },
-                {
-                  title: '是否"双一流"',
-                  key: 'date'
-                },
-                {
-                  title: '操作',
-                  slot: 'action',
-                  width: 150,
-                  align: 'center'
-                }
-              ],
-              data: [
-                {
-                  title: '01',
-                  abstract: '中国石油大学（华东）',
-                  platform: '211',
-                  date: '一流学科'
-                },
-                {
-                  title: '02',
-                  abstract: '清华大学',
-                  platform: '211、985',
-                  date: '一流高校'
-                },
-                {
-                  title: '03',
-                  abstract: '蓝翔',
-                  platform: '否',
-                  date: '否'
-                },
-                {
-                  title: '04',
-                  abstract: '新东方',
-                  platform: '否',
-                  date: '否'
-                }
-              ],
-            }
-        },
-        methods: {
-          show(index) {
-            this.$router.push('/school');
-          },
-          get_date(data) {
-            this.select_date = data
-          },
-          async data_export() {
-            // const {data} = await axios.get('', {
-            //   file_path: this.file_path,
-            // })
-          },
+  import '../assets/css/common.less'
+  import axios from 'axios'
 
-          async set_data_search() {
-            const {data} = await axios.get('', {
-              keywords: this.searchValue1,
-              platform: this.selectValue2,
-              date: this.select_date
-            })
-            // console.log(data)
+  export default {
+    name: "crawling",
+    data() {
+      return {
+        columns: [
+          {
+            title: '排名',
+            key: 'rank'
+          },
+          {
+            title: '学校名称',
+            key: 'schoolName'
+          },
+          {
+            title: '是否"211"',
+            key: 'labelTwo'
+          },
+          {
+            title: '是否"985"',
+            key: 'labelNine'
+          },
+          {
+            title: '是否"自划线"',
+            key: 'labelSelf'
+          },
+          {
+            title: '热度值',
+            key: 'average'
+          },
+          {
+            title: '操作',
+            slot: 'action',
+            width: 150,
+            align: 'center'
           }
+        ],
+        data1: [],
+        schoolNumber: 0,
+      }
+    },
+    mounted(){
+      this.get_data();
+    },
+    methods: {
+      show(index, row) {
+        this.$store.commit("changeSchoolId", row.schoolId);
+        this.$router.push('/school');
+      },
+      get_data() {
+        axios({
+          url: '/api/schoolRank',
+          method: 'get',
+          params: {
+
+          },
+          dataType: 'json',
+        }).then((res) => {
+          if (res.data == '') {
+            this.$Message.info("没有热度排行结果");
+          } else {
+            res.data.forEach(this.parseData);
+            this.data1 = res.data;
+            this.schoolNumber = this.data1.length;
+          }
+        }).catch((error) => {
+          this.$Message.error(error);
+        });
+      },
+      parseData(item, index) {
+        item.rank=index+1;
+        if (item.labelTwo == 1) {
+          item.labelTwo = '√'
+        } else {
+          item.labelTwo = '×'
         }
+        if (item.labelNine == 1) {
+          item.labelNine = '√'
+        } else {
+          item.labelNine = '×'
+        }
+        if (item.labelSelf == 1) {
+          item.labelSelf = '√'
+        } else {
+          item.labelSelf = '×'
+        }
+      },
     }
+  }
 </script>
 
 <style lang="less" scoped>

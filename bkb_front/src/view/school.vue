@@ -27,7 +27,8 @@
         <div v-if="flag===2">
           <div>
             <Card v-for="(item,i) in module2_data" :key="item.schoolCommentId">
-              {{item.schoolCommentId}}楼&#160;&#160;&#160;&#160;{{item.userName}}：{{item.schoolCommentMessage}}&#160;&#160;&#160;&#160;{{item.schoolCommentTime}}
+              {{item.schoolCommentId}}楼&#160;&#160;&#160;&#160;{{item.userName}}：{{item.schoolCommentMessage}}&#160;&#160;&#160;&#160;
+              <span style="color:darkgrey;font-size:5px;">{{item.schoolCommentTime}}</span>
             </Card>
           </div>
           <div @click="add_comment()"
@@ -55,7 +56,7 @@
       :mask-closable="false"
       @on-ok="ok"
       @on-cancel="cancel">
-      <Input type="textarea" :rows="4" placeholder="请输入..."></Input>
+      <Input type="textarea" v-model="commentContent" :rows="4" placeholder="请输入..."></Input>
     </Modal>
   </div>
 </template>
@@ -84,12 +85,13 @@
             align: 'center'
           }
         ],
-        module3_data: [
-          {
-            majorName: '001',
-          },
-        ],
+        module3_data: [],
+        commentContent: '',
+        nowDate: '获取网络时间失败',
       }
+    },
+    mounted() {
+      this.module1();
     },
     methods: {
       module1() {
@@ -137,19 +139,51 @@
           this.$Message.error(error);
         });
       },
-      show(index,row) {
-        this.$store.commit("changeMajorId",row.majorId);
+      show(index, row) {
+        this.$store.commit("changeMajorId", row.majorId);
         this.$router.push('/school/major');
       },
       add_comment() {
-        this.modal1 = true;
+        if(this.$store.state.token==''){
+          this.$Message.error("请先登录");
+        }else{
+          this.commentContent = '';
+          this.modal1 = true;
+        }
       },
       ok() {
-        this.$Message.info('点击了确定');
+        axios({
+          url: 'http://quan.suning.com/getSysTime.do',
+          method: 'get',
+          params: {},
+          dataType: 'json',
+        }).then((res) => {
+          this.nowDate = res.data.sysTime2;
+          //console.log(this.nowDate);
+          axios({
+            url: '/api/addSchoolComment',
+            method: 'post',
+            params: {
+              token: this.$store.state.token,
+              schoolId: this.$store.state.schoolId,
+              schoolCommentMessage: this.commentContent,
+              schoolCommentTime: this.nowDate,
+            },
+            dataType: 'json',
+          }).then((res) => {
+            //console.log(res.data);
+            if (res.data === 1) {
+              this.$Message.success("评论发表成功");
+              this.module2();
+            }
+          }).catch((error) => {
+            this.$Message.error(error);
+          });
+        }).catch((error) => {
+          this.$Message.error(error);
+        });
       },
-      cancel() {
-        this.$Message.info('点击了取消');
-      }
+      cancel() {},
     }
   }
 </script>
