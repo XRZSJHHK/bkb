@@ -5,7 +5,6 @@ public class Resource {
     private Double resourceSize;
     private String resourceUpdateTime;
     private String resourceUrl;
-    private String resourceIntroduction;
 
     public String getResourceName() {
         return resourceName;
@@ -39,12 +38,5 @@ public class Resource {
         this.resourceUrl = resourceUrl;
     }
 
-    public String getResourceIntroduction() {
-        return resourceIntroduction;
-    }
-
-    public void setResourceIntroduction(String resourceIntroduction) {
-        this.resourceIntroduction = resourceIntroduction;
-    }
 
 }

@@ -11,18 +11,20 @@
       <Button type="primary" style="height:24px;float:none !important;margin-top:0 !important;"
               @click="">搜索
       </Button>
+      <span v-if="this.$store.state.userIdentity == 1">
+      <Button type="primary" style="height:24px;float:none !important;margin-top:0 !important;"
+              @click="drawer=true">上传资源
+      </Button>
+      </span>
     </div>
     <Content :style="{padding: '24px', minHeight: '600px', background: '#fff'}">
-      <div class="message">共有资源<span>35</span>个</div>
+      <div class="message">找到资源<span>{{resourceNumber}}</span>个</div>
       <div>
-        <Table size="small" :columns="columns" :data="data">
+        <Table size="small" :columns="columns" :data="data1">
           <template slot-scope="{ row, index }" slot="action">
-            <span @click="show(index)" style="cursor: pointer">
-              <span>查看说明</span>
-            </span>
             <span style="cursor: pointer">
-                <a href="http://152.136.125.45/SheetJSTableExport.xlsx"
-                   download="data.xlsx">下载</a>
+                <a v-bind:href="row.resourceUrl"
+                   download>下载</a>
             </span>
           </template>
         </Table>
@@ -31,6 +33,17 @@
     <div class="page">
       <Page :total="100" show-sizer show-elevator/>
     </div>
+    <Drawer title="上传资源" :closable="false" v-model="drawer" width="600">
+      <Upload
+        :on-success="uploadSuccess"
+        type="drag"
+        action="/api/upload">
+        <div style="padding: 20px 0">
+          <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
+          <p>Click or drag files here to upload</p>
+        </div>
+      </Upload>
+    </Drawer>
   </div>
 </template>
 
@@ -43,45 +56,71 @@
     name: '',
     data() {
       return {
-        searchValue1:'',
+        searchValue1: '',
+        drawer: false,
+        resourceNumber:0,
         columns: [
           {
             title: '名称',
-            key: 'spider_name'
+            key: 'resourceName',
+            width: 500
           },
           {
             title: '大小',
-            key: 'start_time',
+            key: 'resourceSize',
+          },
+          {
+            title: '上传时间',
+            key: 'resourceUpdateTime',
           },
           {
             title: '操作',
             slot: 'action',
-            width: 250,
             align: 'center'
           }
         ],
-        data: [
-          {
-            spider_name: '考研资料1',
-            start_time: '10M',
-          },
-          {
-            spider_name: '考研资料2',
-            start_time: '15M',
-          },
-          {
-            spider_name: '考研资料3',
-            start_time: '6.5M',
-          },
-        ]
+        data1: [],
       }
     },
+    mounted(){
+      this.getResource();
+    },
     methods: {
-      show(index) {
-        this.$Modal.info({
-          title: '这是标题',
-          content: '这是说明内容',
-        })
+      uploadSuccess(response) {
+        if(response==1){
+          this.$Message.success("上传成功");
+          this.getResource();
+        }else{
+          this.$Message.success("上传失败");
+        }
+      },
+      getResource(){
+        this.data1=[];
+        axios({
+          url: '/api/download',
+          method: 'get',
+          params: {
+
+          },
+          dataType: 'json',
+        }).then((res) => {
+          if(res==''){
+            this.$Message.info("没有查找到结果");
+          }else{
+            this.resourceNumber=res.data.length;
+            res.data.forEach(this.formatSize);
+            this.data1=res.data;
+          }
+        }).catch((error) => {
+          this.$Message.error(error);
+        });
+      },
+      formatSize(item,index){
+        if(item.resourceSize<1048576){
+          item.resourceSize=(item.resourceSize/1024).toFixed(2)+' KB';
+        }else{
+          item.resourceSize=(item.resourceSize/1048576).toFixed(2)+' MB';
+        }
       },
     }
   }
@@ -100,6 +139,7 @@
       color: #4466EB;
     }
   }
+
   button {
     margin-top: -6px;
     float: right;

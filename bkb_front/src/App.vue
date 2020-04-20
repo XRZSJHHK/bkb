@@ -16,11 +16,12 @@
               </div>
               <div v-else>
                 <span @click="logout()" style="cursor: pointer">
-                <Icon type="ios-navigate"></Icon>
+                  <Icon type="md-log-out"/>
                 注销
                 </span>
+                &#12288;
                 <span @click="modifyPassword()" style="cursor: pointer">
-                <Icon type="ios-navigate"></Icon>
+                  <Icon type="ios-build"/>
                 修改密码
                 </span>
               </div>
@@ -144,15 +145,15 @@
           this.$store.commit("changeUserName", '');
           this.$store.commit("changeUserIdentity", '');
           this.$store.commit("changeToken", '');
-          this.$store.commit("schoolId", '');
-          this.$store.commit("majorId", '');
+          this.$store.commit("changeSchoolId", '');
+          this.$store.commit("changeMajorId", '');
         }
       },
-      modifyPassword(){
-        var newPassword=prompt("请输入新密码");
-        if(newPassword==null||newPassword==''){
+      modifyPassword() {
+        var newPassword = prompt("请输入新密码");
+        if (newPassword == null || newPassword == '') {
           this.$Message.error("修改失败")
-        }else{
+        } else {
           axios({
             url: '/api/modifyPassword',
             method: 'post',
@@ -162,11 +163,11 @@
             },
             dataType: 'json',
           }).then((res) => {
-              if(res.data==1){
-                this.$Message.success("修改成功");
-              }else{
-                this.$Message.error("修改失败");
-              }
+            if (res.data == 1) {
+              this.$Message.success("修改成功");
+            } else {
+              this.$Message.error("修改失败");
+            }
           }).catch((error) => {
             this.$Message.error(error);
           });
