@@ -40,12 +40,10 @@
         <div v-if="flag===3">
           <div style="margin-top:10px;margin-bottom:10px;">
             <Button @click="lineSimple()">
-              <Icon type="md-add-circle"/>
-              折线图
+              往年录取最低分
             </Button>
             <Button @click="barSimple()">
-              <Icon type="md-add-circle"/>
-              柱状图
+              往年报考人数
             </Button>
           </div>
           <div>
@@ -78,7 +76,7 @@
         flag: 1,
         module1_data: '',
         module2_data: [],
-        module3_data: [],
+        module3_data: {},
         commentContent:'',
         nowDate:'',
       }
@@ -119,6 +117,18 @@
       },
       module3() {
         this.flag = 3;
+        axios({
+          url: '/api/majorAnalysis',
+          method: 'get',
+          params: {
+            majorId:this.$store.state.majorId
+          },
+          dataType: 'json',
+        }).then((res) => {
+          this.module3_data=res.data;
+        }).catch((error) => {
+          this.$Message.error(error);
+        });
       },
       show(index) {
         this.$router.push('/school/major');
@@ -166,13 +176,19 @@
       cancel() {},
 
       lineSimple() {
+        var lineSimple_data=[];
+        lineSimple_data.push(this.module3_data.lowScoreSixteen);
+        lineSimple_data.push(this.module3_data.lowScoreSeventeen);
+        lineSimple_data.push(this.module3_data.lowScoreEighteen);
+        lineSimple_data.push(this.module3_data.lowScoreNineteen);
+        lineSimple_data.push(this.module3_data.lowScoreTwenty);
         var dom = document.getElementById("main");
         var myChart = echarts.init(dom);
         var app = {};
         var option = null;
         option = {
           title: {
-            text: '报考趋势分析'
+            text: '往年录取最低分'
           },
           xAxis: {
             type: 'category',
@@ -182,7 +198,8 @@
             type: 'value'
           },
           series: [{
-            data: [620, 932, 901, 934, 1290, 1330],
+            // data: [620, 932, 901, 934, 1290, 1330],
+            data:lineSimple_data,
             type: 'line'
           }]
         };
@@ -191,13 +208,19 @@
         }
       },
       barSimple() {
+        var barSimple_data=[];
+        barSimple_data.push(this.module3_data.signUpSixteen);
+        barSimple_data.push(this.module3_data.signUpSeventeen);
+        barSimple_data.push(this.module3_data.signUpEighteen);
+        barSimple_data.push(this.module3_data.signUpNineteen);
+        barSimple_data.push(this.module3_data.signUpTwenty);
         var dom = document.getElementById("main");
         var myChart = echarts.init(dom);
         var app = {};
         var option = null;
         option = {
           title: {
-            text: '报考趋势分析'
+            text: '往年报考人数'
           },
           xAxis: {
             type: 'category',
@@ -207,7 +230,8 @@
             type: 'value'
           },
           series: [{
-            data: [620, 932, 901, 934, 1290, 1330],
+            //data: [620, 932, 901, 934, 1290, 1330],
+            data:barSimple_data,
             type: 'bar'
           }]
         };

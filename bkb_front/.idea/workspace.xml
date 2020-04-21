@@ -2,19 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d62a1bdf-9694-4c4e-90d4-4b7c12b24baa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/controller/DownloadController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/controller/UploadController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/dao/DownloadDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/dao/UploadDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/service/DownloadService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/service/DownloadServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/service/UploadService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/service/UploadServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/resources/mapper/DownloadDao.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/resources/mapper/UploadDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/entity/Resource.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/entity/Resource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/controller/UploadDeleteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/service/UploadDeleteService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/service/UploadDeleteServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/controller/UploadController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/dao/UploadDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/dao/UploadDeleteDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/service/UploadService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/service/UploadServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bkb_back/src/main/resources/mapper/UploadDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../bkb_back/src/main/resources/mapper/UploadDeleteDao.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/major.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/major.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -58,11 +56,11 @@
         <option value="$PROJECT_DIR$/src/main.js" />
         <option value="$PROJECT_DIR$/config/index.js" />
         <option value="$PROJECT_DIR$/src/store/index.js" />
-        <option value="$PROJECT_DIR$/src/view/major.vue" />
         <option value="$PROJECT_DIR$/src/view/school.vue" />
         <option value="$PROJECT_DIR$/src/view/crawling.vue" />
         <option value="$PROJECT_DIR$/src/view/retrieve.vue" />
         <option value="$PROJECT_DIR$/src/App.vue" />
+        <option value="$PROJECT_DIR$/src/view/major.vue" />
         <option value="$PROJECT_DIR$/src/view/index.vue" />
       </list>
     </option>
@@ -79,8 +77,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
       <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="bkb_front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bkb_front" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -173,18 +181,20 @@
       <workItem from="1587000760378" duration="2540000" />
       <workItem from="1587017607486" duration="3559000" />
       <workItem from="1587366850240" duration="13416000" />
+      <workItem from="1587434643985" duration="903000" />
+      <workItem from="1587437629492" duration="15596000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="150634000" />
+    <option name="totallyTimeSpent" value="167133000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49759614" visible="true" weight="0.20907739" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4967742" visible="true" weight="0.20907739" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="npm" order="2" sideWeight="0.50240386" side_tool="true" weight="0.20461309" />
+      <window_info id="npm" order="2" sideWeight="0.5032258" side_tool="true" weight="0.20907739" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -196,7 +206,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32903227" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.30322582" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3016129" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -338,13 +348,6 @@
     <entry file="file://$PROJECT_DIR$/config/dev.env.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/assets/icon/icon_leftbar_datasearch_selected.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -353,19 +356,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/assets/icon/icon_leftbar_datasearch_normal.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/major.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="31" column="90" selection-start-line="31" selection-start-column="90" selection-end-line="31" selection-end-column="90" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#Card#0;n#div#0;n#div#1;n#div#0;n#Content#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#Content#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#1;n#div#1;n#div#0;n#Content#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#Content#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/school.vue">
       <provider selected="true" editor-type-id="text-editor">
@@ -397,23 +387,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="165" column="32" lean-forward="true" selection-start-line="165" selection-start-column="32" selection-end-line="165" selection-end-column="32" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#MenuItem#1;n#div#1;n#Menu#0;n#Header#0;n#Layout#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#1;n#MenuItem#1;n#div#1;n#Menu#0;n#Header#0;n#Layout#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#div#1;n#MenuItem#1;n#div#1;n#Menu#0;n#Header#0;n#Layout#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#Button#0;n#div#0;n#div#2;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#Button#0;n#div#1;n#div#2;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/retrieve.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-467">
@@ -431,18 +404,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="43">
+          <caret line="179" column="31" selection-start-line="179" selection-start-column="31" selection-end-line="179" selection-end-column="31" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#MenuItem#1;n#div#1;n#Menu#0;n#Header#0;n#Layout#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#1;n#MenuItem#1;n#div#1;n#Menu#0;n#Header#0;n#Layout#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#div#1;n#MenuItem#1;n#div#1;n#Menu#0;n#Header#0;n#Layout#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#Button#0;n#div#0;n#div#2;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#Button#0;n#div#1;n#div#2;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/major.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2074">
+          <caret line="41" column="42" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#Card#0;n#div#0;n#div#1;n#div#0;n#Content#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#Content#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#1;n#div#1;n#div#0;n#Content#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#Content#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
+        <state relative-caret-position="366">
+          <caret line="164" column="26" selection-start-line="164" selection-start-column="26" selection-end-line="164" selection-end-column="26" />
           <folding>
             <element signature="n#style#0;n#Breadcrumb#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#Input#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#Button#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#template#0;n#Table#0;n#div#1;n#Content#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#Upload#0;n#Drawer#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#Icon#0;n#div#0;n#Upload#0;n#Drawer#0;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
         </state>
       </provider>
     </entry>

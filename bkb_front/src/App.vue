@@ -19,7 +19,6 @@
                   <Icon type="md-log-out"/>
                 注销
                 </span>
-                &#12288;
                 <span @click="modifyPassword()" style="cursor: pointer">
                   <Icon type="ios-build"/>
                 修改密码

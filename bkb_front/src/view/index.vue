@@ -9,9 +9,9 @@
       <Input v-model="searchValue1" clearable size="small" suffix="ios-search" placeholder="请输入关键词…"
              style="width:300px;"/>
       <Button type="primary" style="height:24px;float:none !important;margin-top:0 !important;"
-              @click="">搜索
+              @click="getResourcePart()">搜索
       </Button>
-      <span v-if="this.$store.state.userIdentity == 1">
+      <span v-if="$store.state.userIdentity == 1">
       <Button type="primary" style="height:24px;float:none !important;margin-top:0 !important;"
               @click="drawer=true">上传资源
       </Button>
@@ -22,6 +22,9 @@
       <div>
         <Table size="small" :columns="columns" :data="data1">
           <template slot-scope="{ row, index }" slot="action">
+            <span v-if="$store.state.userIdentity == 1" style="cursor: pointer" @click="deleteResource(row,index)">
+                删除
+            </span>
             <span style="cursor: pointer">
                 <a v-bind:href="row.resourceUrl"
                    download>下载</a>
@@ -35,9 +38,10 @@
     </div>
     <Drawer title="上传资源" :closable="false" v-model="drawer" width="600">
       <Upload
+        :headers="{token:this.$store.state.token}"
         :on-success="uploadSuccess"
         type="drag"
-        action="/api/upload">
+        action="/api/resource/upload">
         <div style="padding: 20px 0">
           <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
           <p>Click or drag files here to upload</p>
@@ -58,7 +62,8 @@
       return {
         searchValue1: '',
         drawer: false,
-        resourceNumber:0,
+        resourceNumber: 0,
+        userIdentity:this.$store.state.userIdentity,
         columns: [
           {
             title: '名称',
@@ -82,44 +87,98 @@
         data1: [],
       }
     },
-    mounted(){
+    mounted() {
       this.getResource();
+    },
+    watch: {
+      // '$store.state.userIdentity': function () {
+      //   console.log(111);
+      // }
     },
     methods: {
       uploadSuccess(response) {
-        if(response==1){
+        if (response == 1) {
           this.$Message.success("上传成功");
           this.getResource();
+        }else if (response == -1) {
+          this.$Message.error("上传失败，上传文件不允许为空");
+        }else if (response == -2) {
+          this.$Message.error("上传失败，用户非法");
+        }else if (response == -3) {
+          this.$Message.error("上传失败，文件名已存在");
         }else{
-          this.$Message.success("上传失败");
+          this.$Message.error("上传失败");
         }
       },
-      getResource(){
-        this.data1=[];
+      deleteResource(row,index){
+        if(confirm("您确定要删除吗？")){
+          axios({
+            url: '/api/resource/delete',
+            method: 'get',
+            params: {
+              resourceName:row.resourceName
+            },
+            headers:{
+              token:this.$store.state.token
+            },
+            dataType: 'json',
+          }).then((res) => {
+            if(res.data==1){
+              this.$Message.success("删除成功");
+              this.getResource();
+            }else{
+              this.$Message.error("删除失败");
+            }
+          }).catch((error) => {
+            this.$Message.error(error);
+          });
+        }
+      },
+      getResource() {
+        this.data1 = [];
         axios({
-          url: '/api/download',
+          url: '/api/download/all',
           method: 'get',
-          params: {
-
-          },
+          params: {},
           dataType: 'json',
         }).then((res) => {
-          if(res==''){
+          if (res.data.length==0) {
             this.$Message.info("没有查找到结果");
-          }else{
-            this.resourceNumber=res.data.length;
+          } else {
+            this.resourceNumber = res.data.length;
             res.data.forEach(this.formatSize);
-            this.data1=res.data;
+            this.data1 = res.data;
           }
         }).catch((error) => {
           this.$Message.error(error);
         });
       },
-      formatSize(item,index){
-        if(item.resourceSize<1048576){
-          item.resourceSize=(item.resourceSize/1024).toFixed(2)+' KB';
-        }else{
-          item.resourceSize=(item.resourceSize/1048576).toFixed(2)+' MB';
+      getResourcePart(){
+        this.data1 = [];
+        axios({
+          url: '/api/download/part',
+          method: 'get',
+          params: {
+            content:this.searchValue1
+          },
+          dataType: 'json',
+        }).then((res) => {
+          if (res.data.length==0) {
+            this.$Message.info("没有查找到结果");
+          } else {
+            this.resourceNumber = res.data.length;
+            res.data.forEach(this.formatSize);
+            this.data1 = res.data;
+          }
+        }).catch((error) => {
+          this.$Message.error(error);
+        });
+      },
+      formatSize(item, index) {
+        if (item.resourceSize < 1048576) {
+          item.resourceSize = (item.resourceSize / 1024).toFixed(2) + ' KB';
+        } else {
+          item.resourceSize = (item.resourceSize / 1048576).toFixed(2) + ' MB';
         }
       },
     }

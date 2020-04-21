@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface DownloadService {
     List<Resource> download();
+    List<Resource> getPart(String content);
 }

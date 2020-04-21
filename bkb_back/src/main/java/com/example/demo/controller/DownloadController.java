@@ -10,11 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "/download")
 public class DownloadController {
     @Autowired
     DownloadService downloadService;
-    @RequestMapping(value="/download",method = RequestMethod.GET)
+    @RequestMapping(value="/all",method = RequestMethod.GET)
     public List<Resource> download(){
         return downloadService.download();
+    }
+    @RequestMapping(value="part",method = RequestMethod.GET)
+    public List<Resource> getPart(String content){
+        return downloadService.getPart(content);
     }
 }
