@@ -33,9 +33,9 @@
         </Table>
       </div>
     </Content>
-    <div class="page">
-      <Page :total="100" show-sizer show-elevator/>
-    </div>
+<!--    <div class="page">-->
+<!--      <Page :total="100" show-sizer show-elevator/>-->
+<!--    </div>-->
     <Drawer title="上传资源" :closable="false" v-model="drawer" width="600">
       <Upload
         :headers="{token:this.$store.state.token}"

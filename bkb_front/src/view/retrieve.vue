@@ -41,9 +41,9 @@
         </Table>
       </div>
     </Content>
-    <div class="page">
-      <Page :total="100" show-sizer show-elevator/>
-    </div>
+<!--    <div class="page">-->
+<!--      <Page :total="100" show-sizer show-elevator/>-->
+<!--    </div>-->
   </div>
 </template>
 

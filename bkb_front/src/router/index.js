@@ -17,20 +17,6 @@ export default new Router({
       },
     },
     {
-      path: '/index/account',
-      name: 'account',
-      components: {
-        content: resolve => require(['../view/account'], resolve),
-      }
-    },
-    {
-      path: '/index/monitor',
-      name: 'monitor',
-      components: {
-        content: resolve => require(['../view/monitor'], resolve),
-      }
-    },
-    {
       path: '/retrieve',
       name: 'retrieve',
       components: {
