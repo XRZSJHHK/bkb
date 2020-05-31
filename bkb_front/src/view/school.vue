@@ -7,16 +7,16 @@
     <Content :style="{padding: '24px', minHeight: '600px', background: '#fff'}">
       <Menu mode="horizontal" :theme="theme1" active-key="1">
         <Menu-item key="1" @click.native="module1()" name="111">
-          <Icon type="ios-paper"></Icon>
           学校介绍
         </Menu-item>
         <Menu-item key="2" @click.native="module2()" name="222">
-          <Icon type="ios-people"></Icon>
           学校评论
         </Menu-item>
         <Menu-item key="3" @click.native="module3()" name="333">
-          <Icon type="settings"></Icon>
           选择专业
+        </Menu-item>
+        <Menu-item key="4" @click.native="module4()" name="444">
+          GoTo
         </Menu-item>
       </Menu>
       <div>
@@ -48,6 +48,10 @@
             </Table>
           </div>
         </div>
+        <div v-if="flag===4">
+          <baidu-map class="map" :center="center" :zoom="zoom" @ready="handler"></baidu-map>
+        </div>
+
       </div>
     </Content>
     <Modal
@@ -63,11 +67,12 @@
 
 <script>
   import axios from 'axios'
-
   export default {
     name: "school",
     data() {
       return {
+        center: {lng: 0, lat: 0},
+        zoom: 3,
         modal1: false,
         theme1: 'light',
         flag: 1,
@@ -90,10 +95,25 @@
         nowDate: '获取网络时间失败',
       }
     },
+    created() {
+    },
     mounted() {
       this.module1();
     },
     methods: {
+      handler ({BMap, map}) {
+        //console.log(BMap, map);
+        var that = this;
+        map.enableScrollWheelZoom();    //启用滚轮放大缩小，默认禁用
+        this.zoom = 18;
+        var myGeo = new BMap.Geocoder();
+        myGeo.getPoint(that.$store.state.schoolName,function(point){
+          if (point) {
+            that.center.lng = point.lng; //经度
+            that.center.lat = point.lat; //纬度
+          }
+        },that.$store.state.schoolCity);
+      },
       module1() {
         this.flag = 1;
         axios({
@@ -139,14 +159,28 @@
           this.$Message.error(error);
         });
       },
+      module4() {
+        this.flag = 4;
+      },
       show(index, row) {
         this.$store.commit("changeMajorId", row.majorId);
+        this.$store.commit("changeMajorName", row.majorName);
+        axios({
+          url: '/api/click/major',
+          method: 'get',
+          params: {
+            majorName: this.$store.state.majorName
+          },
+          dataType: 'json',
+        }).then((res) => {
+
+        });
         this.$router.push('/school/major');
       },
       add_comment() {
-        if(this.$store.state.token==''){
+        if (this.$store.state.token == '') {
           this.$Message.error("请先登录");
-        }else{
+        } else {
           this.commentContent = '';
           this.modal1 = true;
         }
@@ -183,11 +217,15 @@
           this.$Message.error(error);
         });
       },
-      cancel() {},
+      cancel() {
+      },
     }
   }
 </script>
 
 <style scoped>
-
+  .map {
+    width: 100%;
+    height: 500px;
+  }
 </style>

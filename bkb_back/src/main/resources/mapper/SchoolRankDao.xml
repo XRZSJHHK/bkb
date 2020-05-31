@@ -7,13 +7,13 @@
 <mapper namespace="com.example.demo.dao.SchoolRankDao">
     <!-- 绑定接口方法 -->
     <select id="getSchoolRankDao" resultType="com.example.demo.entity.Rank">
-        select s.school_id, s.school_name, s.label_two, s.label_nine, s.label_self, m.average
+        select s.school_id, s.school_name, s.label_two, s.label_nine, s.label_self,s.school_city, m.average
         from school s,
              (select school_id, avg(low_score_twenty) as average
               from major
               GROUP BY school_id) m
         where s.school_id = m.school_id
         ORDER BY average DESC
-        limit 100
+        limit 20
     </select>
 </mapper>

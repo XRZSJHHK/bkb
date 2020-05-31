@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 声明接口地址 -->
+<mapper namespace="com.example.demo.dao.NoticeDao">
+    <!-- 绑定接口方法 -->
+    <select id="checkUserIdentity" resultType="String">
+        select user_identity
+        from account
+        where token=#{token}
+    </select>
+    <select id="getNotice" resultType="com.example.demo.entity.Notice">
+        select *
+        from notice
+        order by id desc
+    </select>
+    <insert id="addNotice" parameterType="String">
+        insert into notice (title,time,content)
+        values (#{title},#{time},#{content})
+    </insert>
+    <delete id="deleteNotice">
+        delete
+        from notice
+        where id=#{id}
+    </delete>
+</mapper>

@@ -7,7 +7,7 @@
 <mapper namespace="com.example.demo.dao.SearchSchoolDao">
     <!-- 绑定接口方法 -->
     <select id="searchDao" parameterType="String" resultType="com.example.demo.entity.School" >
-        select school_id, school_name, label_two, label_nine, label_self
+        select school_id, school_name, label_two, label_nine, label_self, school_city
         from school
         where school_name = #{schoolName}
     </select>

@@ -8,8 +8,11 @@ const store = new Vuex.Store({
     userName: '',
     userIdentity: '',
     token: '',
+    schoolName:'',
     schoolId: '',
+    schoolCity:'',
     majorId: '',
+    majorName:'',
   },
   mutations: {
     changeUserName(state, userName) {
@@ -21,11 +24,20 @@ const store = new Vuex.Store({
     changeToken(state, token) {
       state.token = token;
     },
+    changeSchoolName(state,schoolName){
+      state.schoolName = schoolName;
+    },
     changeSchoolId(state, schoolId) {
       state.schoolId = schoolId;
     },
+    changeSchoolCity(state,schoolCity){
+      state.schoolCity = schoolCity;
+    },
     changeMajorId(state, majorId) {
       state.majorId = majorId;
+    },
+    changeMajorName(state, majorName) {
+      state.majorName = majorName;
     }
   },
   actions: {},

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 声明接口地址 -->
+<mapper namespace="com.example.demo.dao.ClickDao">
+    <!-- 绑定接口方法 -->
+    <select id="getSchoolClick" parameterType="String" resultType="com.example.demo.entity.SchoolClick">
+        select *
+        from school_click
+        where school_name = #{schoolName}
+    </select>
+    <select id="getSchoolClickAll" resultType="com.example.demo.entity.SchoolClick">
+        select *
+        from school_click
+        order by click desc
+        limit 15
+    </select>
+    <insert id="addSchoolClick" parameterType="String">
+        insert into school_click (school_name, click)
+        values (#{schoolName}, 1)
+    </insert>
+    <update id="updateSchoolClick" parameterType="String">
+        update school_click
+        set click=click + 1
+        where school_name = #{schoolName}
+    </update>
+
+    <select id="getMajorClick" parameterType="String" resultType="com.example.demo.entity.MajorClick">
+        select *
+        from major_click
+        where major_name = #{majorName}
+    </select>
+    <select id="getMajorClickAll" resultType="com.example.demo.entity.MajorClick">
+        select *
+        from major_click
+        order by click desc
+        limit 15
+    </select>
+    <insert id="addMajorClick" parameterType="String">
+        insert into major_click (major_name, click)
+        values (#{majorName}, 1)
+    </insert>
+    <update id="updateMajorClick" parameterType="String">
+        update major_click
+        set click=click + 1
+        where major_name = #{majorName}
+    </update>
+</mapper>

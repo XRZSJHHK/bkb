@@ -7,6 +7,15 @@ public class Rank {
     private Integer labelNine;
     private Integer labelSelf;
     private Integer average;
+    private String schoolCity;
+
+    public String getSchoolCity() {
+        return schoolCity;
+    }
+
+    public void setSchoolCity(String schoolCity) {
+        this.schoolCity = schoolCity;
+    }
 
     public String getSchoolId() {
         return schoolId;

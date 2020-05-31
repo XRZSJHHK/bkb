@@ -49,6 +49,18 @@
                 热度排行
               </div>
             </MenuItem>
+            <MenuItem @click.native="toRecommend()" name="4">
+              <div class="menu-one">
+                <img src="./assets/icon/icon_list_Accountmanagement_normal.png" class="img-size">
+                报考推荐
+              </div>
+            </MenuItem>
+            <MenuItem @click.native="toHelper()" name="5">
+              <div class="menu-one">
+                <img src="./assets/icon/icon_list_look_normal.png" class="img-size">
+                我的通知
+              </div>
+            </MenuItem>
           </Menu>
         </Sider>
         <Layout :style="{padding: '0 24px 24px'}">
@@ -224,6 +236,12 @@
       toCrawling() {
         this.$router.push('/crawling');
       },
+      toRecommend(){
+        this.$router.push('/recommend');
+      },
+      toHelper(){
+        this.$router.push('/helper');
+      }
     }
   }
 </script>

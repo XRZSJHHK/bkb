@@ -18,7 +18,7 @@ public class DownloadController {
     public List<Resource> download(){
         return downloadService.download();
     }
-    @RequestMapping(value="part",method = RequestMethod.GET)
+    @RequestMapping(value="/part",method = RequestMethod.GET)
     public List<Resource> getPart(String content){
         return downloadService.getPart(content);
     }

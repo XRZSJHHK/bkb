@@ -35,11 +35,16 @@
         columns: [
           {
             title: '排名',
-            key: 'rank'
+            key: 'rank',
+            width: 100,
           },
           {
             title: '学校名称',
             key: 'schoolName'
+          },
+          {
+            title:'所属城市',
+            key:'schoolCity'
           },
           {
             title: '是否"211"',
@@ -74,6 +79,18 @@
     methods: {
       show(index, row) {
         this.$store.commit("changeSchoolId", row.schoolId);
+        this.$store.commit("changeSchoolCity", row.schoolCity);
+        this.$store.commit("changeSchoolName", row.schoolName);
+        axios({
+          url: '/api/click/school',
+          method: 'get',
+          params: {
+            schoolName: this.$store.state.schoolName
+          },
+          dataType: 'json',
+        }).then((res) => {
+
+        });
         this.$router.push('/school');
       },
       get_data() {

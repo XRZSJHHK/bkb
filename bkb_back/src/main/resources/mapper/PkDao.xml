@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 声明接口地址 -->
+<mapper namespace="com.example.demo.dao.PkDao">
+    <!-- 绑定接口方法 -->
+    <select id="getResult" resultType="com.example.demo.entity.Pk">
+        select s.school_name as label, m.major_id as value
+        from school s,
+             (select school_id, major_id from major where major_name = #{majorName}) m
+        where s.school_id = m.school_id
+    </select>
+</mapper>

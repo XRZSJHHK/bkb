@@ -43,6 +43,20 @@ export default new Router({
       components: {
         content: resolve => require(['../view/major'], resolve),
       }
+    },
+    {
+      path: '/recommend',
+      name: '/recommend',
+      components: {
+        content: resolve => require(['../view/recommend'], resolve),
+      }
+    },
+    {
+      path: '/helper',
+      name: '/helper',
+      components: {
+        content: resolve => require(['../view/helper'], resolve),
+      }
     }
   ]
 })
