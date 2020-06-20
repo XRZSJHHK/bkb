@@ -209,23 +209,27 @@
         });
       },
       go_register() {
-        axios({
-          url: '/api/register',
-          method: 'post',
-          params: {
-            userName: this.myUserName,
-            userPassword: this.myUserPassword
-          },
-          dataType: 'json',
-        }).then((res) => {
-          if (res.data === -2) {
-            this.$Message.error('注册失败，用户名已存在');
-          } else if (res.data === 1) {
-            this.$Message.success('注册成功');
-          }
-        }).catch((error) => {
-          this.$Message.error(error);
-        });
+        if(this.myUserName==''||this.myUserPassword==''){
+          this.$Message.error("用户名或密码不得为空");
+        }else{
+          axios({
+            url: '/api/register',
+            method: 'post',
+            params: {
+              userName: this.myUserName,
+              userPassword: this.myUserPassword
+            },
+            dataType: 'json',
+          }).then((res) => {
+            if (res.data === -2) {
+              this.$Message.error('注册失败，用户名已存在');
+            } else if (res.data === 1) {
+              this.$Message.success('注册成功');
+            }
+          }).catch((error) => {
+            this.$Message.error(error);
+          });
+        }
       },
       toIndex() {
         this.$router.push('/index');

@@ -1,44 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d62a1bdf-9694-4c4e-90d4-4b7c12b24baa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/controller/ClickController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/controller/NoticeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/controller/PkController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/dao/ClickDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/dao/NoticeDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/dao/PkDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/entity/MajorClick.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/entity/Notice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/entity/Pk.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/entity/SchoolClick.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/service/ClickService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/service/ClickServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/service/NoticeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/service/NoticeServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/service/PkService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/service/PkServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/resources/mapper/ClickDao.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/resources/mapper/NoticeDao.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bkb_back/src/main/resources/mapper/PkDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/controller/DownloadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/controller/DownloadController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/entity/Rank.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/entity/Rank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/entity/School.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bkb_back/src/main/java/com/example/demo/entity/School.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bkb_back/src/main/resources/mapper/SchoolRankDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../bkb_back/src/main/resources/mapper/SchoolRankDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bkb_back/src/main/resources/mapper/ScreenSchoolDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../bkb_back/src/main/resources/mapper/ScreenSchoolDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bkb_back/src/main/resources/mapper/SearchSchoolDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../bkb_back/src/main/resources/mapper/SearchSchoolDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/webpack.base.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/webpack.base.conf.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/crawling.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/crawling.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/major.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/major.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/retrieve.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/retrieve.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/school.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/school.vue" afterDir="false" />
-    </list>
+    <list default="true" id="d62a1bdf-9694-4c4e-90d4-4b7c12b24baa" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -49,7 +12,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -89,9 +52,9 @@
         <option value="$PROJECT_DIR$/src/view/retrieve.vue" />
         <option value="$PROJECT_DIR$/src/view/school.vue" />
         <option value="$PROJECT_DIR$/src/view/crawling.vue" />
-        <option value="$PROJECT_DIR$/src/App.vue" />
         <option value="$PROJECT_DIR$/src/view/helper.vue" />
         <option value="$PROJECT_DIR$/src/view/recommend.vue" />
+        <option value="$PROJECT_DIR$/src/App.vue" />
       </list>
     </option>
   </component>
@@ -114,6 +77,11 @@
             <path>
               <item name="bkb_front" type="b2602c69:ProjectViewProjectNode" />
               <item name="bkb_front" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bkb_front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bkb_front" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -226,16 +194,17 @@
       <workItem from="1590822096742" duration="9529000" />
       <workItem from="1590906018859" duration="10214000" />
       <workItem from="1590919002119" duration="3527000" />
+      <workItem from="1590977281206" duration="799000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="236127000" />
+    <option name="totallyTimeSpent" value="236926000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4967742" visible="true" weight="0.17782739" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4967742" visible="true" weight="0.17782739" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" sideWeight="0.5032258" side_tool="true" weight="0.20907739" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -249,7 +218,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32903227" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.26086956" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.2596774" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -517,23 +486,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="268" column="3" lean-forward="true" selection-start-line="268" selection-start-column="3" selection-end-line="268" selection-end-column="3" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#MenuItem#1;n#div#1;n#Menu#0;n#Header#0;n#Layout#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#1;n#MenuItem#1;n#div#1;n#Menu#0;n#Header#0;n#Layout#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#div#1;n#MenuItem#1;n#div#1;n#Menu#0;n#Header#0;n#Layout#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#Button#0;n#div#0;n#div#2;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#Button#0;n#div#1;n#div#2;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/helper.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -565,6 +517,23 @@
             <element signature="n#style#0;n#div#1;n#div#0;n#Card#0;n#Col#1;n#Row#0;n#div#1;n#Content#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#0;n#Card#0;n#Col#1;n#Row#0;n#div#1;n#Content#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#Card#0;n#Col#1;n#Row#0;n#div#1;n#Content#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="219" column="9" selection-start-line="219" selection-start-column="9" selection-end-line="219" selection-end-column="9" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#MenuItem#1;n#div#1;n#Menu#0;n#Header#0;n#Layout#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#1;n#MenuItem#1;n#div#1;n#Menu#0;n#Header#0;n#Layout#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#div#1;n#MenuItem#1;n#div#1;n#Menu#0;n#Header#0;n#Layout#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#Button#0;n#div#0;n#div#2;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#Button#0;n#div#1;n#div#2;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
