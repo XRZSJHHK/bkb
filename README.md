@@ -3,4 +3,4 @@
 # 前端技术
 采用vue框架，使用了iview、echarts等组件库
 # 后端技术
-采用springboot+mybatis（即SSM）、mysql数据库
+采用springboot+mybatis、mysql数据库
